@@ -93,7 +93,7 @@ export async function listFilesWithPrefix(prefix: string, downloadFiles = true) 
                 }
 
                 // Create a local path that matches the structure but uses the correct OS path separator
-                const localPath = path.join(__dirname, 'downloads', Key.replace(/\\/g, path.sep));
+                const localPath = path.join(__dirname, Key.replace(/\\/g, path.sep));
                 const dirPath = path.dirname(localPath);
 
                 if (!fs.existsSync(dirPath)) {

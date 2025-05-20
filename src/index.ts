@@ -2,7 +2,9 @@ import "dotenv/config"
 import { createClient, commandOptions } from "redis"
 import { listFilesWithPrefix } from "./aws"
 import { buildProject } from "./builder"
+import { uploadDistFile } from "./uploadDistFile"
 import path from "path"
+
 
 const subscriber = createClient()
 subscriber.connect()
@@ -21,6 +23,7 @@ async function main() {
         if (id) {
             console.log("Building project", id, "with prefix", prefix)
             await buildProject(id)
+            await uploadDistFile(id)
         }
 
 
